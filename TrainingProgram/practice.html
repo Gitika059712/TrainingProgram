@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Form</title>
+	<link rel="stylesheet" href="practice.css">
+	<script type="text/javascript" src="practice.js"></script>
+
+</head>
+<form name="billingForm">
+	<body>
+		<h1>Checkout Form</h1>
+			<p>Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> 
+<br>
+<br>
+		<h2>Billing Address</h2>
+	<label > First Name </label> 
+	<label id="lname"> Last Name </label><br><br>
+			<input type="text" name="FirstName" id="FName" class="input"></input>
+
+			<input type="text" name="SecondName" id="LName" class="input" ></input>
+
+<br>
+<label class = "validate" id="msgF"></label>
+<label class = "validate" id="msgL"></label>
+
+<br>
+
+	<label>Username </label> <br><br>
+			<input type="Username" name="Username" id="UName" placeholder="Username" class="input"></input>
+<br>
+<label class = "validate" id="msgU"></label>
+
+<br>
+
+
+	<label>Email </label> <label id="optional">(Optional)</label><br><br>
+			<input type="email" name="EmailId" id="email" placeholder="you@example.com" class="input"></input>
+<br>
+<label class = "validate" id="msgE"></label>
+
+<br>
+
+
+	<label>Address </label><br><br>
+			<input type="address" name="address" id="address" placeholder="123 Main St" class="input"></input>
+<br>
+<label class = "validate" id="msgA1"></label>
+
+<br>
+
+
+	<label>Address2 </label> <label id="optional">(Optional) </label><br><br>
+			<input type="address2" name="address2" id="address2" placeholder="Apartment or Suite" class="input"></input>
+<br>
+<label class = "validate" id="msgA2"></label>
+
+<br>
+
+
+	<label>Country </label> 
+	<label id="stateid">State</label>
+	<label id="zipid">Zip </label> <br><br>
+			<div class="inline">
+				<select name="Country" id="country"> <br>
+						<option name="Choose.." >Choose..</option>
+						<option name="United States" >United States</option>
+				</select>
+
+				<select name="States" id="state"> <br>
+						<option name="Choose.." >Choose..</option>
+						<option name="Calefornia" >Calefornia</option>
+				</select>
+
+
+			<input type="text" name="Zip" id="zip" width="15px" class="input"></input>
+
+			</div>
+<br>
+<label class = "validate" id="msgC"></label>
+<label class = "validate" id="msgS"></label>
+<label class = "validate" id="msgZ"></label>
+
+<br>
+
+
+<hr class=divider> 
+<br>
+			<input type="checkbox" id="checkbox1">Shipping address is the same as my billing address</input>
+<br>
+			<input type="checkbox" id="checkbox2">Save this information for next time</input>
+<br>
+<br>
+
+<hr class=divider>
+			<div id="payment">Payment</div> 
+<br>
+				<form1 id="radiobtn">
+
+					<input type="radio" name="card" id="radiobtn1">Credit Card</input> <br>
+					<input type="radio" name="card" id="radiobtn2">Debit Card</input> <br>
+					<input type="radio" name="card" id="radiobtn3">Paypal</input>
+				</form1>
+<br>
+<label class = "validate" id="msgR"></label>
+<br>
+
+			<label >Name on card </label>
+			<label id="ccn">Credit card number </label>
+<br>
+<br>
+				<input type="text" name="Cardholder"  id="cardholder" class="input">
+				<input type="text" name="CardNumber"  id="cardnumber" class="input">
+<br>
+<label class = "validate" id="msgNC"></label>
+<label class = "validate" id="msgCCN"></label>
+
+<br>
+
+					<label>Expiration </label> <label id="cvv">CVV </label>
+<br>
+<br>
+						<input type="date" name="expirydate" id="expirydate" class="input">
+						<input type="text" name="cvvnumber" id="cvvnumber" class="input">
+<br> 
+<label class = "validate" id="msgEx"></label>
+<label class = "validate" id="msgCVV"></label>
+
+<br> 
+<hr class=divider><br>
+
+				<button type="button" name="checkout" id="checkout" onclick="validateform()">Continue to Checkout</button>
+
+</body>
+</form>
+</html>
