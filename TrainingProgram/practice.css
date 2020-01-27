@@ -1,0 +1,110 @@
+body{margin-left: 200px;}
+h1{
+	margin-left: 350px;
+}
+p{
+	font-size: 20px;
+	text-align: center;
+}
+#FName,#LName , #cardholder , #cardnumber{
+	border-spacing: 20px;
+	width: 250px;
+}
+#name{
+	text-indent: 20em;
+	word-spacing: 20px;
+}
+input.input{
+
+	height: 30px;
+	width: 537px;
+	border-radius: 6px;	
+}
+
+hr.divider{
+	border-top: 2px solid #bbb;
+	width: 537px;
+	margin-left: 0px;
+}
+
+#checkbox1 , #checkbox2{
+	
+	height: 15px;
+}
+#zip , #expirydate , #cvvnumber{
+	width: 130px;
+}
+#checkout{
+	text-align: center;
+	color: white;
+	background-color: DodgerBlue;
+	height: 50px;
+	border-radius: 6px;
+	width: 537px;
+}
+#radiobtn{
+
+}
+#payment{
+	font-size: 25px;
+}
+#country , #state{
+	width: 200px;
+	height: 30px;
+	border-radius: 6px;
+	background-color:white; 
+}
+#lname {
+	
+	margin-left: 215px;
+}
+#ccn{
+	margin-left: 196px;
+}
+#cvv{
+	margin-left: 100px;
+}
+#LName , #cardnumber ,#cvvnumber{
+	margin-left: 30px;
+}
+#optional{
+	color:rgb(120,120,120);
+}
+#inline{
+	display: inline-block;
+}
+#validationF{
+	font-size: 10px;
+	margin-left: 10px;
+
+}
+.inline{
+	display: inline-block;
+}
+#state{
+margin-left: 20px;
+width: 150px;
+}
+#stateid , #msgS{
+	margin-left: 170px;
+}
+#zip{
+	margin-left: 25px;
+}
+#zipid {
+	margin-left: 145px;
+}
+.validate{
+	font-size: 10px;
+	color: red;
+}
+#msgL , #msgCCN{
+	margin-left: 290px;
+}
+#msgCVV{
+	margin-left: 170px;
+}
+#msgZ{
+	margin-left: 230px;
+}
+
