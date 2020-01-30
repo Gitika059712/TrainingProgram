@@ -1,0 +1,8 @@
+.clrbtn{
+  display: flex;
+  flex:1px;
+  align-items: center;
+  justify-content: center;
+  border:2px solid gray;
+  color:black;
+}
