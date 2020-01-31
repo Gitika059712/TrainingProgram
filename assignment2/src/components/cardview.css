@@ -2,3 +2,22 @@ p{
   font-weight: 900;
   color:black;
 }
+.span{
+  font-size:17px;
+  color:black;
+  
+}
+.subspan{
+  color:gray;
+  font-size:15px;
+}
+.card-title{
+  font-size:30px;
+}
+.smalltext{
+  font-size:15px;
+  font-weight:400;
+}
+.light{
+  font-weight:400;
+}

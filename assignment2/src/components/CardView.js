@@ -1,5 +1,5 @@
-
-    import React from 'react'
+ import React from 'react';
+ import './cardview.css';
     
 
   export const CardView = ({ userinfo }) => {
@@ -8,24 +8,24 @@
         <center><h1>Basic User Information</h1></center>
         {userinfo.map((info1) => (
           <div className="card"key={info1.id}>
-               <div className="card-body">
+              <div className="card-body">
               <h5 className="card-title">{info1.name}</h5>
-              <h6 className="card-subtitle mb-2 text-muted"><span>Username- </span> {info1.username}</h6>
-              <h6 className="card-subtitle mb-2 text-muted"><span>Email- </span>{info1.email}</h6>
-              <h6 className="card-subtitle mb-2 text-muted"><span>Phone- </span>{info1.phone}</h6>
-              <h6 className="card-subtitle mb-2 text-muted"><span>Website- </span>{info1.website}</h6>
-              <h6>Address</h6>
-              <p className="card-text"><span>Street- </span>{info1.address.street}</p>
-              <p className="card-text"><span>Suite- </span>{info1.address.suite}</p>
-              <p className="card-text"><span>City- </span>{info1.address.city}</p>
-              <p className="card-text"><span>Zipcode- </span>{info1.address.zipcode}</p>
-              <h6>geo</h6>
-              <p className="card-text"><span>lat: </span>{info1.address.geo.lat}</p>
-              <p className="card-text"><span>lng: </span>{info1.address.geo.lng}</p>
-              <h6>Company</h6>
-              <p className="card-text"><span>Name- </span>{info1.company.name}</p>
-              <p className="card-text"><span>catchPhrase- </span>{info1.company.catchPhrase}</p>
-              <p className="card-text"><span>bs- </span>{info1.company.bs}</p>
+              <h6 className="card-subtitle mb-2 text-muted "><span className="span">Username- </span> <span className="subspan">{info1.username}</span></h6>
+              <h6 className="card-subtitle mb-2 text-muted"><span className="span">Email- </span><span className="subspan">{info1.email}</span></h6>
+              <h6 className="card-subtitle mb-2 text-muted"><span className="span">Phone- </span><span className="subspan">{info1.phone}</span></h6>
+              <h6 className="card-subtitle mb-2 text-muted"><span className="span">Website- </span><span className="subspan">{info1.website}</span></h6>
+              <h6 className="span">Address</h6>
+              <p className="card-text"><span className="light">Street-</span>  <span className="subspan">{info1.address.street}</span></p>
+              <p className="card-text"><span className="light">Suite-</span><span className="subspan">{info1.address.suite} </span></p>
+              <p className="card-text"><span className="light">City- </span><span className="subspan">{info1.address.city}</span></p>
+              <p className="card-text"><span className="light">Zipcode- </span><span className="subspan">{info1.address.zipcode}</span></p>
+              <h6 className="span" >geo</h6>
+              <p className="card-text"><span className="smalltext">lat: </span><span className="subspan">{info1.address.geo.lat}</span></p>
+              <p className="card-text"><span className="smalltext">lng: </span><span className="subspan">{info1.address.geo.lng}</span></p>
+              <h6 className="span">Company</h6>
+              <p className="card-text"><span className="light">Name- </span><span className="subspan">{info1.company.name}</span></p>
+              <p className="card-text"><span className="light">catchPhrase- </span><span className="subspan">{info1.company.catchPhrase}</span></p>
+              <p className="card-text"><span className="light">bs- </span><span className="subspan">{info1.company.bs}</span></p>
             </div>
           </div>
         ))}
