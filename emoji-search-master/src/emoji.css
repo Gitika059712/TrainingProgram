@@ -1,0 +1,31 @@
+.wrapper {
+  border: 2px solid black;
+}
+.img {
+  margin-left: 573px;
+  height: 150px;
+  width: 150px;
+}
+.title1 {
+  font-style: italic;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+.keyword {
+  font-size: 15px;
+  text-align: center;
+  font-weight: 500;
+}
+.component-emoji-result-row copy-to-clipboard {
+  margin-left: 200px;
+}
+.btn {
+  margin-left: 585px;
+  height: 50px;
+  border-radius: 12px;
+  background-color: azure;
+}
+.symbol {
+  text-align: center;
+}
