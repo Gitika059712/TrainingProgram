@@ -1,0 +1,18 @@
+.btn-div {
+  margin-left: 500px;
+}
+.btn {
+  border-radius: 20px;
+  margin-left: 10px;
+  height: 40px;
+}
+.btn-list {
+  background-color: black;
+  color: white;
+}
+.btn-details {
+  background-color: white;
+}
+.btn-newpost {
+  background-color: grey;
+}
