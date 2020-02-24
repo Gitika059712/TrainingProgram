@@ -64,9 +64,6 @@ class Login extends Component {
             this.setState({ redirectToReferrer: true });
           });
         }
-
-        console.log(res);
-        console.log(res.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -75,7 +72,6 @@ class Login extends Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.props);
 
     const { redirectToReferrer } = this.state;
     const { from } = this.props.location.state || {
@@ -113,7 +109,7 @@ class Login extends Component {
             onChange={this.handleChange("password")}
             margin="normal"
           />
-          <br />{" "}
+          <br />
           {this.state.error && (
             <Typography component="p" color="error">
               <Icon color="error" className={classes.error}>

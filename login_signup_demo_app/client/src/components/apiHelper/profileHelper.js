@@ -13,20 +13,6 @@ export const findUserProfile = (params, credentials) => {
     .catch(err => console.error(err));
 };
 
-export const deleteUser = (params, credentials) => {
-  return fetch("/api/users/" + params.userId, {
-    method: "DELETE",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + credentials.t
-    }
-  })
-    .then(response => {
-      return response.json();
-    })
-    .catch(err => console.error(err));
-};
 export const signout = () => {
   return fetch("http://localhost:3001/auth/signout/", {
     method: "GET"

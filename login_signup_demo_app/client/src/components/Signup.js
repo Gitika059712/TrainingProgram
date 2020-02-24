@@ -15,8 +15,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import Dialog from "@material-ui/core/Dialog";
 import { Link } from "react-router-dom";
 
-import auth from "./authHelper";
-
 const styles = theme => ({
   card: {
     maxWidth: 600,
@@ -67,7 +65,6 @@ class Signup extends Component {
       email: this.state.email || undefined,
       password: this.state.password || undefined
     };
-    console.log(user);
 
     axios
       .post(`http://localhost:3001/api/users`, { user })
@@ -75,12 +72,8 @@ class Signup extends Component {
         if (res.error) {
           this.setState({ error: res.data.error });
         } else {
-          auth.authenticate(res.data, () => {
-            this.setState({ error: "", open: true });
-          });
+          this.setState({ error: "", open: true });
         }
-        console.log(res);
-        console.log(res.data);
       })
       .catch(function(error) {
         console.log(error);
@@ -156,7 +149,7 @@ class Signup extends Component {
               onChange={this.handleChange("password")}
               margin="normal"
             />
-            <br />{" "}
+            <br />
             {this.state.error && (
               <Typography component="p" color="error">
                 <Icon color="error" className={classes.error}>
@@ -185,7 +178,7 @@ class Signup extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Link to="/login">
+            <Link to="/signin">
               <Button color="primary" autoFocus="autoFocus" variant="contained">
                 Log In
               </Button>

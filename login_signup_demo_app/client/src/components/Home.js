@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -22,28 +22,27 @@ const styles = theme => ({
     minHeight: 450
   }
 });
-class Home extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <div>
-        <Card className={classes.card}>
-          <Typography type="headline" component="h2" className={classes.title}>
-            Welcome to Demo App
+const Home = props => {
+  const { classes } = props;
+  return (
+    <div>
+      <Card className={classes.card}>
+        <Typography type="headline" component="h2" className={classes.title}>
+          Welcome to Demo App
+        </Typography>
+        <CardMedia
+          className={classes.media}
+          image={logo}
+          title="Demo"
+        ></CardMedia>
+        <CardContent>
+          <Typography type="body1" component="p">
+            Demo App with authentication.
           </Typography>
-          <CardMedia
-            className={classes.media}
-            image={logo}
-            title="Demo"
-          ></CardMedia>
-          <CardContent>
-            <Typography type="body1" component="p">
-              Demo App with authentication.
-            </Typography>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-}
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
 export default withStyles(styles)(Home);

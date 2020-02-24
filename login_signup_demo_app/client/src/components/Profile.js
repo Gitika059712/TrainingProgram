@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -6,14 +7,12 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Person from "@material-ui/icons/Person";
 import Divider from "@material-ui/core/Divider";
 import auth from "./authHelper";
 import { findUserProfile } from "./apiHelper/profileHelper";
-import DeleteUser from "./DeleteUser";
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -28,18 +27,10 @@ const styles = theme => ({
   }
 });
 
-class Profile extends Component {
-  constructor({ match }) {
-    super();
+const Profile = props => {
+  const [state, setuser] = useState({ user: "", redirectToSignin: false });
 
-    this.state = {
-      user: "",
-      redirectToSignin: false
-    };
-    this.match = match;
-  }
-
-  init = userId => {
+  const init = userId => {
     const jwt = auth.isAuthenticated();
     findUserProfile(
       {
@@ -47,58 +38,46 @@ class Profile extends Component {
       },
       { t: jwt.token }
     ).then(data => {
-      debugger;
+      console.log(data);
       if (data.error) {
-        this.setState({ redirectToSignin: true });
+        setuser({ redirectToSignin: true });
       } else {
-        this.setState({ user: data });
+        setuser({ user: data });
       }
     });
   };
-  componentWillReceiveProps = props => {
-    this.init(props.match.params.userId);
-  };
-  componentDidMount = () => {
-    this.init(this.match.params.userId);
-  };
+  useEffect(() => {
+    init(props.match.params.userId);
+  }, [props.match.params.userId]);
 
-  render() {
-    const { classes } = this.props;
-    const redirectToSignin = this.state.redirectToSignin;
-    if (redirectToSignin) {
-      return <Redirect to="/login" />;
-    }
-    return (
-      <div>
-        <Paper className={classes.root} elevation={4}>
-          <Typography type="title" className={classes.title}>
-            Profile
-          </Typography>
-          <List dense>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <Person />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary={this.state.user.name}
-                secondary={this.state.user.email}
-              />{" "}
-              {auth.isAuthenticated().user &&
-                auth.isAuthenticated().user._id === this.state.user._id && (
-                  <ListItemSecondaryAction>
-                    <DeleteUser userId={this.state.user._id} />
-                  </ListItemSecondaryAction>
-                )}
-              />
-            </ListItem>
-            <Divider />
-          </List>
-        </Paper>
-      </div>
-    );
+  const { classes } = props;
+  const redirectToSignin = state.redirectToSignin;
+  if (redirectToSignin) {
+    return <Redirect to="/login" />;
   }
-}
+  return (
+    <div>
+      <Paper className={classes.root} elevation={4}>
+        <Typography type="title" className={classes.title}>
+          Profile
+        </Typography>
+        <List dense>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <Person />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText
+              primary={state.user.name}
+              secondary={state.user.email}
+            />
+          </ListItem>
+          <Divider />
+        </List>
+      </Paper>
+    </div>
+  );
+};
 
 export default withStyles(styles)(Profile);

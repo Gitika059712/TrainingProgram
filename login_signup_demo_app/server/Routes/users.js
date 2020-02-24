@@ -7,11 +7,7 @@ router.post("/api/users", userController.signup);
 
 router
   .route("/api/users/:userId")
-  .get(userAuth.requireSignin, userController.findUserProfile)
-  .delete(
-    userAuth.requireSignin,
-    userAuth.hasAuthorization,
-    userController.deleteUser
-  );
+  .get(userAuth.requireSignin, userController.findUserProfile);
+
 router.param("userId", userController.findUserById);
 module.exports = router;
