@@ -5,11 +5,13 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import logo from "../logo.svg";
+
 const styles = theme => ({
   card: {
-    maxWidth: 700,
-    margin: "auto",
-    marginTop: theme.spacing(5)
+    maxWidth: 7000,
+    minHeight: 1000,
+    margin: "auto"
+    //marginTop: theme.spacing(5)
   },
   title: {
     padding: `${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(
@@ -19,11 +21,12 @@ const styles = theme => ({
     fontSize: 24
   },
   media: {
-    minHeight: 450
+    minHeight: 1000
   }
 });
 const Home = props => {
   const { classes } = props;
+
   return (
     <div>
       <Card className={classes.card}>
