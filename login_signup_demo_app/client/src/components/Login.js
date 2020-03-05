@@ -8,7 +8,7 @@ import Icon from "@material-ui/core/Icon";
 import { withStyles } from "@material-ui/core/styles";
 import { Field, reduxForm } from "redux-form";
 import { TextField } from "@material-ui/core";
-
+import Navbar from "./NavBar";
 const styles = theme => ({
   card: {
     maxWidth: 600,
@@ -55,6 +55,7 @@ let Login = props => {
 
   return (
     <div>
+      <Navbar />
       <form onSubmit={handleSubmit}>
         <Card className={classes.card}>
           <CardContent>

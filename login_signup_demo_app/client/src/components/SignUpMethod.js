@@ -8,7 +8,7 @@ export default class SignUpMethod extends Component {
     open: false
   };
   handleSignup = user => {
-    console.log(user);
+    user = { ...user, image: localStorage.getItem("image") };
 
     axios
       .post(`http://localhost:3001/api/users`, { user })

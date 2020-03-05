@@ -32,7 +32,8 @@ const login = (req, res) => {
         lastname: user.lastname,
         address: user.address,
         contact: user.contact,
-        email: user.email
+        email: user.email,
+        image: user.image
       }
     });
   });

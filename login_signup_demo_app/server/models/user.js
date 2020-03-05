@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-const crypto = require("crypto");
 
+const crypto = require("crypto");
+var Schema = mongoose.Schema;
 var userSchema = new Schema({
   firstname: {
     type: String,
@@ -26,6 +26,9 @@ var userSchema = new Schema({
     unique: "Email already exists",
     match: [/.+\@.+\..+/, "Please fill a valid email"],
     trim: true
+  },
+  image: {
+    type: String
   },
   hashedPassword: {
     type: String,

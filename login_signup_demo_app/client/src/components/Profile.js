@@ -9,15 +9,16 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
-import Person from "@material-ui/icons/Person";
 import Divider from "@material-ui/core/Divider";
 import auth from "./authHelper";
 import { findUserProfile } from "./apiHelper/profileHelper";
+import Navbar from "./NavBar";
 
 const styles = theme => ({
   root: theme.mixins.gutters({
-    maxWidth: 600,
+    maxWidth: 1000,
     margin: "auto",
+
     padding: theme.spacing(3),
     marginTop: theme.spacing(5)
   }),
@@ -38,7 +39,6 @@ const Profile = props => {
       },
       { t: jwt.token }
     ).then(data => {
-      console.log(data);
       if (data.error) {
         setuser({ redirectToSignin: true });
       } else {
@@ -57,6 +57,7 @@ const Profile = props => {
   }
   return (
     <div>
+      <Navbar />
       <Paper className={classes.root} elevation={4}>
         <Typography type="title" className={classes.title}>
           Profile
@@ -64,9 +65,9 @@ const Profile = props => {
         <List dense>
           <ListItem>
             <ListItemAvatar>
-              <Avatar>
-                <Person />
-              </Avatar>
+              <Avatar
+                src={`data:image/jpeg;base64,${state.user.image}`}
+              ></Avatar>
             </ListItemAvatar>
             <ListItemText
               primary={state.user.name}

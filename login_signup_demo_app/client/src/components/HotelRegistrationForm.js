@@ -7,15 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import Icon from "@material-ui/core/Icon";
 import { withStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogContent from "@material-ui/core/DialogContent";
-import Dialog from "@material-ui/core/Dialog";
-import { Link } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 import { TextField } from "@material-ui/core";
-import { useState } from "react";
 import Navbar from "./NavBar";
 
 const styles = theme => ({
@@ -44,9 +37,8 @@ const styles = theme => ({
   }
 });
 
-let Signup = props => {
+let HotelRegistrationForm = props => {
   const { handleSubmit, classes, formState } = props;
-  const [pic, setPic] = useState(null);
 
   const onChangeImage = e => {
     var f = e.target.files[0];
@@ -102,12 +94,12 @@ let Signup = props => {
               component="h2"
               className={classes.title}
             >
-              Sign Up
+              Register Hotel
             </Typography>
             <br />
 
             <div style={{ marginLeft: 232 }}>
-              <img src={pic} style={{ height: 100, width: 100 }}></img>
+              <Avatar style={{ height: 100, width: 100 }}></Avatar>
               <br />
             </div>
             <div>
@@ -121,72 +113,115 @@ let Signup = props => {
               />
             </div>
             <br />
-            <div>
-              <Field
-                className={classes.textField}
-                label="First Name"
-                name="firstname"
-                margin="normal"
-                type="text"
-                component={renderTextField}
-              />
-            </div>
-            <br />
-            <div>
-              <Field
-                label="Last Name"
-                name="lastname"
-                type="text"
-                component={renderTextField}
-                className={classes.textField}
-                margin="normal"
-              />
-            </div>
-            <br />
-            <div>
-              <Field
-                label="Address"
-                name="address"
-                className={classes.textField}
-                margin="normal"
-                type="text"
-                component={renderTextField}
-              />
-            </div>
-            <br />
-            <div>
-              <Field
-                label="Contact"
-                type="text"
-                className={classes.textField}
-                margin="normal"
-                name="contact"
-                component={renderTextField}
-              />
-            </div>
-            <br />
-            <div>
-              <Field
-                label="Email"
-                type="email"
-                className={classes.textField}
-                margin="normal"
-                component={renderTextField}
-                name="email"
-              />
-            </div>
-            <br />
-            <div>
-              <Field
-                label="Password"
-                type="password"
-                className={classes.textField}
-                margin="normal"
-                component={renderTextField}
-                name="password"
-              />
-            </div>
 
+            <div>
+              <Field
+                className={classes.textField}
+                label="Hotel Name"
+                name="hotelname"
+                margin="normal"
+                type="text"
+                component={renderTextField}
+              />
+            </div>
+            <br />
+            <div>
+              <Field
+                label="Hotel Contact"
+                type="text"
+                className={classes.textField}
+                margin="normal"
+                name="hotelcontact"
+                component={renderTextField}
+              />
+            </div>
+            <br />
+            <div>
+              <Field
+                label="Hotel Email"
+                type="text"
+                className={classes.textField}
+                margin="normal"
+                name="hotelemail"
+                component={renderTextField}
+              />
+            </div>
+            <br />
+            <div>
+              <Field
+                label="Hotel Website"
+                type="text"
+                className={classes.textField}
+                margin="normal"
+                name="hotelwebsite"
+                component={renderTextField}
+              />
+            </div>
+            <br />
+            <div>
+              <span>Address</span>
+            </div>
+            <br />
+            <div>
+              <Field
+                label="Hotel City"
+                name="hotelcity"
+                type="text"
+                component={renderTextField}
+                className={classes.textField}
+                margin="normal"
+              />
+            </div>
+            <br />
+            <div>
+              <Field
+                label="Hotel State"
+                name="hotelstate"
+                className={classes.textField}
+                margin="normal"
+                type="text"
+                component={renderTextField}
+              />
+            </div>
+            <br />
+
+            <br />
+            <div>
+              <Field
+                label="Pincode"
+                type="text"
+                className={classes.textField}
+                margin="normal"
+                component={renderTextField}
+                name="pincode"
+              />
+            </div>
+            <br />
+            <div>
+              <span>Geo</span>
+            </div>
+            <br />
+            <div>
+              <Field
+                label="Latitude"
+                type="text"
+                className={classes.textField}
+                margin="normal"
+                component={renderTextField}
+                name="lat"
+              />
+            </div>
+            <br />
+            <div>
+              <Field
+                label="Longitude"
+                type="text"
+                className={classes.textField}
+                margin="normal"
+                component={renderTextField}
+                name="lon"
+              />
+            </div>
             <br />
 
             {formState.error && (
@@ -210,27 +245,12 @@ let Signup = props => {
           </CardActions>
         </Card>
       </form>
-      <Dialog open={formState.open} disableBackdropClick={true}>
-        <DialogTitle>New Account</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            New account successfully created.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Link to="/signin">
-            <Button color="primary" autoFocus="autoFocus" variant="contained">
-              Log In
-            </Button>
-          </Link>
-        </DialogActions>
-      </Dialog>
     </div>
   );
 };
 
-Signup = reduxForm({
+HotelRegistrationForm = reduxForm({
   form: "signIn"
-})(Signup);
+})(HotelRegistrationForm);
 
-export default withStyles(styles)(Signup);
+export default withStyles(styles)(HotelRegistrationForm);

@@ -5,6 +5,9 @@ import green from "@material-ui/core/colors/green";
 import blue from "@material-ui/core/colors/blue";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "./Routes";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
 
 const theme = createMuiTheme({
   palette: {
@@ -30,9 +33,7 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <MuiThemeProvider theme={theme}>
-          <Routes />
-        </MuiThemeProvider>
+        <Routes />
       </BrowserRouter>
     </div>
   );

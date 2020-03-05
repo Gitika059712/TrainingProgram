@@ -13,11 +13,14 @@ export default class LoginMethod extends Component {
     axios
       .post(`http://localhost:3001/auth/login`, { user })
       .then(res => {
+        var id = res.data.user._id;
+
+        localStorage.setItem("id", id);
         if (res.error) {
           this.props.history.push("/signin");
         } else {
           auth.authenticate(res.data, () => {
-            this.props.history.push("/");
+            this.props.history.push("/home");
           });
         }
       })

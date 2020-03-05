@@ -1,6 +1,10 @@
 import React from "react";
-import Navbar from "./NavBar";
-
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import {
   MDBCarousel,
   MDBCarouselCaption,
@@ -10,11 +14,50 @@ import {
   MDBMask,
   MDBContainer
 } from "mdbreact";
-
-const Home = () => {
+const styles = theme => ({
+  card: {
+    maxWidth: 600,
+    margin: "auto",
+    textAlign: "center",
+    marginTop: theme.spacing(5),
+    paddingBottom: theme.spacing(2)
+  },
+  error: {
+    verticalAlign: "middle"
+  },
+  title: {
+    marginTop: theme.spacing(2),
+    color: "white"
+  },
+  textField: {
+    marginLeft: theme.spacing(),
+    marginRight: theme.spacing(),
+    width: 300
+  },
+  submit: {
+    margin: "auto",
+    marginBottom: theme.spacing(2)
+  }
+});
+const WebsiteHome = props => {
   return (
     <div>
-      <Navbar />
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" className={props.classes.title}>
+            Home
+          </Typography>
+
+          <span style={{ marginLeft: 950 }}>
+            <Link to="/home">
+              <Button className={props.classes.title}>Hotel Owner</Button>
+            </Link>
+            <Link to="/home">
+              <Button className={props.classes.title}>Customer</Button>
+            </Link>
+          </span>
+        </Toolbar>
+      </AppBar>
       <MDBCarousel
         activeItem={1}
         length={3}
@@ -67,9 +110,9 @@ const Home = () => {
           </MDBCarouselItem>
         </MDBCarouselInner>
       </MDBCarousel>
-      <MDBContainer></MDBContainer>
+      <MDBContainer>xyzzzzz</MDBContainer>
     </div>
   );
 };
 
-export default Home;
+export default withStyles(styles)(WebsiteHome);
