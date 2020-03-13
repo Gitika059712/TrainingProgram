@@ -7,74 +7,69 @@ import Home from "@material-ui/icons/Home";
 import Button from "@material-ui/core/Button";
 import auth from "./authHelper";
 import { Link, withRouter } from "react-router-dom";
-
-const isActive = (history, path) => {
-  if (history.location.pathname === path) return { color: "#F44336" };
-  else return { color: "#ffffff" };
-};
+import { transparent } from "material-ui/styles/colors";
 
 const Menu = withRouter(({ history }) => (
-  <AppBar position="static">
+  <AppBar
+    position="static"
+    style={{
+      backgroundColor: transparent,
+      boxShadow: "none",
+      color: "black"
+    }}
+  >
     <Toolbar>
-      <Typography type="title" color="initial">
-        Login-Signup-Demo-App
-      </Typography>
-      <Link to="/">
-        <IconButton
-          aria-label="Home"
-          style={{
-            color: "white"
-          }}
-        >
-          <Home />
-        </IconButton>
-      </Link>
+      <Typography type="title">Hotel Registration and Booking App</Typography>
 
       {!auth.isAuthenticated() && (
         <span>
-          <Link to="/signup">
-            <Button
-              style={{
-                color: "white"
-              }}
-            >
-              Sign up
-            </Button>
+          <Link to="/">
+            <IconButton aria-label="Home" style={{ marginLeft: "700px" }}>
+              <Home />
+            </IconButton>
           </Link>
-          <Link to="/signin">
-            <Button
-              style={{
-                color: "white"
-              }}
-            >
-              Log In
-            </Button>
+
+          <Link to="/signup" style={{ marginLeft: "25px" }}>
+            <Button>Sign up</Button>
+          </Link>
+
+          <Link to="/signin" style={{ marginLeft: "25px" }}>
+            <Button>Log In</Button>
           </Link>
         </span>
       )}
 
       {auth.isAuthenticated() && (
         <span>
-          <Link to={"/users/" + auth.isAuthenticated().user._id}>
-            <Button
-              style={{
-                color: "white"
-              }}
-            >
-              My Profile
-            </Button>
-          </Link>
-          <Link to={"/hotelregistration"}>
-            <Button
-              style={{
-                color: "white"
-              }}
-            >
-              Hotel Registration
-            </Button>
+          <span style={{ marginLeft: "600px" }}>
+            {!auth.isHotelManager() && (
+              <Link to={"/customerdashboard"}>
+                <Button>Dashboard</Button>
+              </Link>
+            )}
+          </span>
+
+          {auth.isHotelManager() && (
+            <span>
+              <Link
+                to={"/hotelmanagerdashboard"}
+                style={{ marginLeft: "-150px" }}
+              >
+                <Button>Dashboard</Button>
+              </Link>
+              <Link to={"/hotelregistration"} style={{ marginLeft: "25px" }}>
+                <Button>Hotel Registration</Button>
+              </Link>
+            </span>
+          )}
+          <Link
+            to={"/users/" + auth.isAuthenticated().user._id}
+            style={{ marginLeft: "25px" }}
+          >
+            <Button>My Profile</Button>
           </Link>
           <Button
-            color="inherit"
+            style={{ marginLeft: "25px" }}
             onClick={() => {
               auth.signout(() => history.push("/"));
             }}

@@ -7,12 +7,13 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import auth from "./authHelper";
 import { findUserProfile } from "./apiHelper/profileHelper";
-import Navbar from "./NavBar";
+import DeleteUser from "./DeleteUser";
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -55,9 +56,10 @@ const Profile = props => {
   if (redirectToSignin) {
     return <Redirect to="/login" />;
   }
+
   return (
     <div>
-      <Navbar />
+      {console.log(state.user._id)}
       <Paper className={classes.root} elevation={4}>
         <Typography type="title" className={classes.title}>
           Profile
@@ -66,14 +68,20 @@ const Profile = props => {
           <ListItem>
             <ListItemAvatar>
               <Avatar
-                src={`data:image/jpeg;base64,${state.user.image}`}
+                src={"data:image/jpeg;base64" + state.user.image}
               ></Avatar>
             </ListItemAvatar>
             <ListItemText
-              primary={state.user.name}
+              primary={state.user.firstname}
               secondary={state.user.email}
             />
           </ListItem>
+          {auth.isAuthenticated().user &&
+            auth.isAuthenticated().user._id === state.user._id && (
+              <ListItemSecondaryAction>
+                <DeleteUser userId={state.user._id} />
+              </ListItemSecondaryAction>
+            )}
           <Divider />
         </List>
       </Paper>

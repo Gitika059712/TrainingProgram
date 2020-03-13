@@ -8,14 +8,25 @@ import Icon from "@material-ui/core/Icon";
 import { withStyles } from "@material-ui/core/styles";
 import { Field, reduxForm } from "redux-form";
 import { TextField } from "@material-ui/core";
-import Navbar from "./NavBar";
+
 const styles = theme => ({
+  wrapper: {
+    maxWidth: "100%",
+    height: "600px",
+    marginTop: theme.spacing(0),
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundImage: `url(${"https://www.thelalit.com/wp-content/uploads/2017/01/Concierge-Service-Delhi.jpg"})`
+  },
+
   card: {
     maxWidth: 600,
     margin: "auto",
     textAlign: "center",
     marginTop: theme.spacing(5),
-    paddingBottom: theme.spacing(2)
+    paddingBottom: theme.spacing(2),
+    border: "2px solid black",
+    backgroundColor: "transparent"
   },
   error: {
     verticalAlign: "middle"
@@ -55,56 +66,57 @@ let Login = props => {
 
   return (
     <div>
-      <Navbar />
-      <form onSubmit={handleSubmit}>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography
-              type="headline"
-              component="h2"
-              className={classes.title}
-            >
-              Log In
-            </Typography>
-            <Field
-              name="email"
-              type="email"
-              label="Email"
-              component={renderTextField}
-              className={classes.textField}
-              margin="normal"
-            />
-            <br />
-            <Field
-              name="password"
-              type="password"
-              label="Password"
-              component={renderTextField}
-              className={classes.textField}
-              margin="normal"
-            />
-            <br />
-            {formState.error && (
-              <Typography component="p" color="error">
-                <Icon color="error" className={classes.error}>
-                  error
-                </Icon>
-                {formState.error}
+      <Card className={classes.wrapper}>
+        <form onSubmit={handleSubmit}>
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography
+                type="headline"
+                component="h2"
+                className={classes.title}
+              >
+                Log In
               </Typography>
-            )}
-          </CardContent>
-          <CardActions>
-            <Button
-              color="primary"
-              variant="contained"
-              type="submit"
-              className={classes.submit}
-            >
-              Submit
-            </Button>
-          </CardActions>
-        </Card>
-      </form>
+              <Field
+                name="email"
+                type="email"
+                label="Email"
+                component={renderTextField}
+                className={classes.textField}
+                margin="normal"
+              />
+              <br />
+              <Field
+                name="password"
+                type="password"
+                label="Password"
+                component={renderTextField}
+                className={classes.textField}
+                margin="normal"
+              />
+              <br />
+              {formState.error && (
+                <Typography component="p" color="error">
+                  <Icon color="error" className={classes.error}>
+                    error
+                  </Icon>
+                  {formState.error}
+                </Typography>
+              )}
+            </CardContent>
+            <CardActions>
+              <Button
+                color="primary"
+                variant="contained"
+                type="submit"
+                className={classes.submit}
+              >
+                Submit
+              </Button>
+            </CardActions>
+          </Card>
+        </form>
+      </Card>
     </div>
   );
 };

@@ -16,11 +16,13 @@ export default class LoginMethod extends Component {
         var id = res.data.user._id;
 
         localStorage.setItem("id", id);
+
         if (res.error) {
           this.props.history.push("/signin");
         } else {
           auth.authenticate(res.data, () => {
-            this.props.history.push("/home");
+            localStorage.setItem("userrole", res.data.user.role);
+            this.props.history.push("/dashboard");
           });
         }
       })

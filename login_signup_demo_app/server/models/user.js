@@ -20,6 +20,10 @@ var userSchema = new Schema({
     trim: true,
     required: "User contact number is required"
   },
+  role: {
+    type: String,
+    required: "Role is required"
+  },
   email: {
     type: String,
     required: "Email is required",

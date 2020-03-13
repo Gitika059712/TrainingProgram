@@ -3,11 +3,12 @@ var mongoose = require("mongoose");
 const crypto = require("crypto");
 const Schema = mongoose.Schema;
 const hotelSchema = new Schema({
-  id_: { type: String },
+  _id: { type: String },
   hotelname: { type: String, required: "Hotel Name is required", trim: true },
   hotelimages: {
     type: String
   },
+  hotelgalleryimages: { type: Array },
   hotelemail: {
     type: String,
     trim: true,
@@ -16,6 +17,11 @@ const hotelSchema = new Schema({
     required: "Hotel Email is required"
   },
   hoteladdress: {
+    haddress: {
+      type: String,
+      required: "Hotel address is required",
+      trim: true
+    },
     hotelcity: { type: String, required: "Hotel City is required", trim: true },
     hotelstate: {
       type: String,
@@ -25,7 +31,7 @@ const hotelSchema = new Schema({
     hotelpincode: { type: String, required: "pincode is required", trim: true },
     geo: {
       lat: { type: Number },
-      long: { type: Number }
+      lng: { type: Number }
     }
   },
 

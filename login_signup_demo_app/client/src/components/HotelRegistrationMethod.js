@@ -8,14 +8,19 @@ export default class HotelRegistrationMethod extends Component {
     open: false
   };
   hotelRegistrationMethod = hotel => {
+    var g = JSON.parse(localStorage.getItem("gallery"));
+    console.log(g);
     hotel = {
       ...hotel,
       image: localStorage.getItem("image"),
+      gallery: JSON.parse(localStorage.getItem("gallery")),
       id: localStorage.getItem("id")
     };
+
     console.log(hotel);
+    console.log(hotel.gallery);
     axios
-      .post(`http://localhost:3001/api/users`, { hotel })
+      .post(`http://localhost:3001/api/users/hotelregistration`, { hotel })
       .then(res => {
         if (res.error) {
           this.setState({ error: res.data.error });
