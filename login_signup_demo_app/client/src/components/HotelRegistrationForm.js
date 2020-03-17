@@ -74,7 +74,23 @@ let HotelRegistrationForm = props => {
       {...custom}
     />
   );
-
+  const renderTextArea = ({ input, meta: { touched, error, warning } }) => (
+    <div>
+      <label>Brief Description of Hotel</label>
+      <div>
+        <textarea
+          {...input}
+          placeholder="Description"
+          rows="10"
+          cols="40"
+          style={{ background: "transparent", border: "1px solid black" }}
+        />
+        {touched &&
+          ((error && <span>{error}</span>) ||
+            (warning && <span>{warning}</span>))}
+      </div>
+    </div>
+  );
   const renderFileInput = ({ input, label, meta: omitMeta, ...props }) => (
     <input
       style={{ opacity: "0" }}
@@ -118,7 +134,9 @@ let HotelRegistrationForm = props => {
       contentType: file.type,
       length: file.size
     }));
+    console.log(files);
     Promise.all(files).then(result => {
+      console.log(result);
       var content = result.map(content => {
         return content.content;
       });
@@ -312,6 +330,15 @@ let HotelRegistrationForm = props => {
               <div>
                 <span>Other Details about Hotel</span>
               </div>
+              <br />
+              <Field
+                label="Description"
+                type="text"
+                className={classes.textField}
+                margin="normal"
+                component={renderTextArea}
+                name="description"
+              />
               <br />
               <div>
                 {images.map(img => {

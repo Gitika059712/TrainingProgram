@@ -1,16 +1,16 @@
 import React from "react";
-
 import { Card, CardMedia, withStyles, Typography } from "@material-ui/core";
+import Rating from "./Rating";
 
 const styles = () => ({
   media: {
     height: 0,
-    paddingTop: "56.25%" // 16:9
+    paddingTop: "56.25%"
   },
   overlay: {
     position: "absolute",
     top: "550px",
-    left: "575px",
+    left: "540px",
     color: "black",
     background: "transparent"
   },
@@ -18,9 +18,25 @@ const styles = () => ({
     position: "relative"
   }
 });
+
 const HotelData = props => {
   const { classes } = props;
-  console.log(props.data);
+
+  if (props.data.hotelgalleryimages === undefined) {
+    console.log("error");
+  } else {
+    var imgs = props.data.hotelgalleryimages.map(item => (
+      <img
+        style={{ border: "1px solid black" }}
+        className="d-block "
+        src={item}
+        alt="First slide"
+        width="200px"
+        height="200px"
+      />
+    ));
+  }
+
   return (
     <div>
       <Card className={classes.card}>
@@ -30,13 +46,49 @@ const HotelData = props => {
           title="Hotels"
         />
         <div className={classes.overlay}>
-          <Typography variant="h2" gutterBottom>
+          <Typography
+            variant="h2"
+            gutterBottom
+            style={{ fontFamily: "italic" }}
+          >
             {props.data.hotelname}
           </Typography>
         </div>
       </Card>
       <br />
-      <Typography variant="h2" align="center" gutterBottom>
+      <br />
+      <Typography
+        variant="h5"
+        align="center"
+        gutterBottom
+        style={{ fontFamily: "italic" }}
+      >
+        Welcome to
+      </Typography>
+      <Typography
+        variant="h2"
+        align="center"
+        gutterBottom
+        style={{ fontFamily: "italic" }}
+      >
+        {props.data.hotelname}
+      </Typography>
+      <Typography
+        variant="subtitle1"
+        align="center"
+        gutterBottom
+        style={{ fontSize: "20px", fontFamily: "italic" }}
+      >
+        {props.data.hoteldescription}
+      </Typography>
+
+      <br />
+      <Typography
+        variant="h3"
+        align="center"
+        gutterBottom
+        style={{ fontFamily: "italic" }}
+      >
         Gallery
       </Typography>
       <div
@@ -51,17 +103,14 @@ const HotelData = props => {
             margin: "20px"
           }}
         >
-          {props.data.hotelgalleryimages.map(imgs => (
-            <img
-              style={{ border: "1px solid black" }}
-              className="d-block  "
-              src={imgs}
-              alt="First slide"
-              width="200px"
-              height="200px"
-            />
-          ))}
+          {imgs}
         </div>
+        <br />
+        <Typography variant="subtitle2" gutterBottom>
+          Give Rating
+        </Typography>
+        <br />
+        <Rating />
       </div>
     </div>
   );

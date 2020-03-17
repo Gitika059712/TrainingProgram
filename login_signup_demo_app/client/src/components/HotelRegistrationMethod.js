@@ -17,8 +17,6 @@ export default class HotelRegistrationMethod extends Component {
       id: localStorage.getItem("id")
     };
 
-    console.log(hotel);
-    console.log(hotel.gallery);
     axios
       .post(`http://localhost:3001/api/users/hotelregistration`, { hotel })
       .then(res => {

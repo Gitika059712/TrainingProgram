@@ -21,6 +21,7 @@ export default class LoginMethod extends Component {
           this.props.history.push("/signin");
         } else {
           auth.authenticate(res.data, () => {
+            localStorage.setItem("userId", res.data.user._id);
             localStorage.setItem("userrole", res.data.user.role);
             this.props.history.push("/dashboard");
           });

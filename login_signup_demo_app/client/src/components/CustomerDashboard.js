@@ -3,7 +3,7 @@ import HotelList from "./HotelList";
 import Typography from "@material-ui/core/Typography";
 import { fetchHotelData } from "./apiHelper/profileHelper";
 import GoogleMap from "./GoogleMap";
-import "./customerDashboard.css";
+import Grid from "@material-ui/core/Grid";
 
 const CustomerDashboard = () => {
   const [hoteluserdata, setHotelUserData] = useState([]);
@@ -12,14 +12,15 @@ const CustomerDashboard = () => {
       setHotelUserData(hoteldata);
     });
   }, []);
-  console.log(hoteluserdata);
+
   return (
     <div>
       <Typography variant="h4" gutterBottom>
         Hotel List
       </Typography>
-      <div className="row">
-        <div class="column column1">
+
+      <Grid container spacing={1}>
+        <Grid item xs={4}>
           {hoteluserdata.map(hotelUser => (
             <HotelList
               key={hotelUser._id}
@@ -33,11 +34,11 @@ const CustomerDashboard = () => {
               lng={hotelUser.hoteladdress.geo.lng}
             />
           ))}
-        </div>
-        <div class="column map">
+        </Grid>
+        <Grid item xs={8} style={{ position: "relative" }}>
           <GoogleMap data={hoteluserdata} />
-        </div>
-      </div>
+        </Grid>
+      </Grid>
     </div>
   );
 };

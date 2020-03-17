@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-import PrivateRoutes from "./PrivateRoute";
 import SignUpMethod from "./components/SignUpMethod";
 import LoginMethod from "./components/LoginMethod";
 import Dashboard from "./components/Dashboard";
@@ -11,6 +10,7 @@ import HotelRegistrationMethod from "./components/HotelRegistrationMethod";
 import HotelManagerDashboard from "./components/HotelManagerDashboard";
 import CustomerDashboard from "./components/CustomerDashboard";
 import HotelDescription from "./components/HotelDescription";
+
 const Routes = () => {
   return (
     <div>
@@ -18,7 +18,6 @@ const Routes = () => {
       <Switch>
         />
         <Route exact path="/" component={Home} />
-        <PrivateRoutes path="/user/edit/:userId" />
         <Route path="/users/:userId" component={Profile} />
         <Route
           exact
@@ -33,7 +32,7 @@ const Routes = () => {
           component={HotelManagerDashboard}
         />
         <Route path="/customerdashboard" component={CustomerDashboard} />
-        <Route path="/:_id" component={HotelDescription} />
+        <Route path="/api/hoteldata/:_id" component={HotelDescription} />
       </Switch>
     </div>
   );

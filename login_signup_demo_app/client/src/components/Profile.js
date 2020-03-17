@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
+import Card from "@material-ui/core/Card";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
@@ -16,16 +16,22 @@ import { findUserProfile } from "./apiHelper/profileHelper";
 import DeleteUser from "./DeleteUser";
 
 const styles = theme => ({
-  root: theme.mixins.gutters({
-    maxWidth: 1000,
+  wrapper: {
+    maxWidth: "100%",
+    height: "1050px",
+    marginTop: theme.spacing(0),
+    backgroundRepeat: "no-repeat",
+    backgroundImage: `url(${"https://www.elsetge.cat/myimg/f/192-1928136_best-steam-profile-backgrounds-orange-steam-profile-background.jpg"})`,
+    backgroundSize: "cover"
+  },
+  card: {
+    maxWidth: 600,
     margin: "auto",
-
-    padding: theme.spacing(3),
-    marginTop: theme.spacing(5)
-  }),
-  title: {
-    margin: `${theme.spacing(3)}px 0 ${theme.spacing(2)}px`,
-    color: theme.palette.protectedTitle
+    textAlign: "center",
+    marginTop: theme.spacing(5),
+    paddingBottom: theme.spacing(2),
+    border: "2px solid black",
+    backgroundColor: "transparent"
   }
 });
 
@@ -58,34 +64,36 @@ const Profile = props => {
   }
 
   return (
-    <div>
-      {console.log(state.user._id)}
-      <Paper className={classes.root} elevation={4}>
-        <Typography type="title" className={classes.title}>
-          Profile
-        </Typography>
-        <List dense>
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar
-                src={"data:image/jpeg;base64" + state.user.image}
-              ></Avatar>
-            </ListItemAvatar>
-            <ListItemText
-              primary={state.user.firstname}
-              secondary={state.user.email}
-            />
-          </ListItem>
-          {auth.isAuthenticated().user &&
-            auth.isAuthenticated().user._id === state.user._id && (
-              <ListItemSecondaryAction>
-                <DeleteUser userId={state.user._id} />
-              </ListItemSecondaryAction>
-            )}
-          <Divider />
-        </List>
-      </Paper>
-    </div>
+    <Card className={classes.wrapper}>
+      <div>
+        <Card className={classes.card} elevation={4}>
+          <Typography type="title" className={classes.title}>
+            Profile
+          </Typography>
+          <List dense>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar
+                  src={"data:image/jpeg;base64" + state.user.image}
+                ></Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary={state.user.firstname}
+                secondary={state.user.email}
+              />
+              <br />
+            </ListItem>
+            {auth.isAuthenticated().user &&
+              auth.isAuthenticated().user._id === state.user._id && (
+                <ListItemSecondaryAction>
+                  <DeleteUser userId={state.user._id} />
+                </ListItemSecondaryAction>
+              )}
+            <Divider />
+          </List>
+        </Card>
+      </div>
+    </Card>
   );
 };
 

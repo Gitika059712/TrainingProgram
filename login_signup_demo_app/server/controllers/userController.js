@@ -42,7 +42,7 @@ const findAllUsers = (req, res) => {
   });
 };
 
-const deleteUser = (req, res, next) => {
+const deleteUser = (req, res) => {
   let user = req.profile;
   User.deleteOne({ _id: req.profile._id }, (err, deletedUser) => {
     if (err) {

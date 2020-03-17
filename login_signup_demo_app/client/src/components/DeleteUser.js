@@ -21,19 +21,17 @@ class DeleteUser extends Component {
   };
   deleteAccount = () => {
     const jwt = auth.isAuthenticated();
-    console.log(jwt);
+
     deleteUser(
       {
         userId: this.props.userId
       },
       { t: jwt.token }
     ).then(data => {
-      let message = data.data.message;
-
       if (data.error) {
         console.log("Error");
       } else {
-        auth.signout(() => alert({ message }));
+        auth.signout(() => alert("User deleted successfully"));
         this.setState({ redirect: true });
       }
     });

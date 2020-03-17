@@ -6,41 +6,14 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { MDBContainer } from "mdbreact";
 import { Link } from "react-router-dom";
-import Geocode from "react-geocode";
-
-// set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-Geocode.setApiKey("AIzaSyDmPD51nNmrUZZzQTWoYjWKxLjdAkR5z3E");
-
-// set response language. Defaults to english.
-Geocode.setLanguage("en");
-
-// set response region. Its optional.
-// A Geocoding request with region=es (Spain) will return the Spanish city.
-Geocode.setRegion("es");
-
-// Enable or disable logs. Its optional.
-Geocode.enableDebug();
 
 const HotelList = props => {
-  console.log(props);
-
-  const handle = () => {
-    Geocode.fromAddress("Indore").then(
-      response => {
-        const { lat, lng } = response.results[0].geometry.location;
-        console.log(lat, lng);
-      },
-      error => {
-        console.error(error);
-      }
-    );
-  };
   return (
     <MDBContainer fluid>
       <br />
 
       <span>
-        <Link to={props._id}>
+        <Link to={"/api/hoteldata/" + props._id}>
           <Card variant="outlined">
             <CardActionArea>
               <CardMedia
@@ -64,7 +37,6 @@ const HotelList = props => {
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <button onClick={handle}>click</button>
           </Card>
         </Link>
       </span>

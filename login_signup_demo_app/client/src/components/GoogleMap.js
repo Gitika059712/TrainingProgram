@@ -8,9 +8,9 @@ const mapStyles = {
 
 export class MapContainer extends Component {
   state = {
-    showingInfoWindow: false, //Hides or the shows the infoWindow
-    activeMarker: {}, //Shows the active marker upon click
-    selectedPlace: {} //Shows the infoWindow to the selected place upon a marker
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -29,7 +29,6 @@ export class MapContainer extends Component {
     }
   };
   render() {
-    console.log(this.props);
     return (
       <Map
         google={this.props.google}
@@ -42,11 +41,16 @@ export class MapContainer extends Component {
       >
         {this.props.data.map(add => (
           <Marker
+            position={{
+              lat: add.hoteladdress.geo.lat,
+              lng: add.hoteladdress.geo.lat
+            }}
             onClick={this.onMarkerClick}
             name={add.hotelname}
             contact={add.hotelcontact}
           />
         ))}
+
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}

@@ -4,7 +4,12 @@ const crypto = require("crypto");
 const Schema = mongoose.Schema;
 const hotelSchema = new Schema({
   _id: { type: String },
-  hotelname: { type: String, required: "Hotel Name is required", trim: true },
+  hotelname: {
+    type: String,
+    required: "Hotel Name is required",
+    trim: true,
+    uppercase: true
+  },
   hotelimages: {
     type: String
   },
@@ -42,7 +47,8 @@ const hotelSchema = new Schema({
     minLength: 6,
     maxLength: 12
   },
-  hotelwebsite: { type: String, trim: true }
+  hotelwebsite: { type: String, trim: true },
+  hoteldescription: { type: String, trim: true }
 });
 var Hotel = mongoose.model("Hotel", hotelSchema);
 module.exports = Hotel;

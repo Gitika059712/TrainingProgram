@@ -46,3 +46,19 @@ export const fetchHotelData = () => {
     })
     .catch(err => console.log(err));
 };
+export const findHotelManagerProfile = params => {
+  return fetch("http://localhost:3001/api/hoteldata/" + params._id)
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.error(err));
+};
+export const deleteHotelData = userId => {
+  console.log(userId);
+  return axios
+    .delete(`http://localhost:3001/api/hoteldata/${userId._id}`)
+    .then(res => {
+      return res;
+    })
+    .catch(err => console.log(err));
+};
