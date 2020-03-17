@@ -22,6 +22,7 @@ const styles = theme => ({
     maxWidth: "100%",
     height: "100%",
     marginTop: theme.spacing(0),
+
     backgroundRepeat: "no-repeat",
     backgroundImage: `url(${"https://www.raffles.com/assets/0/72/651/652/1701/0104df89-1430-4d7f-92ba-0ab3782af436.jpg"})`,
     backgroundSize: "cover"
@@ -30,7 +31,8 @@ const styles = theme => ({
     maxWidth: 600,
     margin: "auto",
     textAlign: "center",
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(15),
+    marginBottom: theme.spacing(5),
     paddingBottom: theme.spacing(2),
     border: "2px solid black",
     backgroundColor: transparent

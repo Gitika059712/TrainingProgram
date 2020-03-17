@@ -28,7 +28,7 @@ const styles = theme => ({
     maxWidth: 600,
     margin: "auto",
     textAlign: "center",
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(15),
     paddingBottom: theme.spacing(2),
     border: "2px solid black",
     backgroundColor: "transparent"

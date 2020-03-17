@@ -14,6 +14,7 @@ const Menu = withRouter(({ history }) => (
     position="static"
     style={{
       backgroundColor: transparent,
+      position: "absolute",
       boxShadow: "none",
       color: "black"
     }}

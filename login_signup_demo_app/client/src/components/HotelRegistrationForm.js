@@ -30,7 +30,7 @@ const styles = theme => ({
     maxWidth: 600,
     margin: "auto",
     textAlign: "center",
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(15),
     marginBottom: theme.spacing(5),
     paddingBottom: theme.spacing(2),
     background: transparent,
